@@ -2,12 +2,15 @@ import { Box } from "@mui/system";
 import { useSnackbar } from "notistack";
 import TextField from "@mui/material/TextField";
 import SendIcon from "@mui/icons-material/Send";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Button } from "@mui/material";
 import { ENV } from "../config";
+import { SimpleContext } from "../context/simpleContext";
+import { useAuth } from "../hooks/useAuth";
 
 export const Register = (props) => {
-  const { onRegister } = props;
+  const { onAuth: onRegister } = useAuth;
+  const someName = useContext(SimpleContext);
   const { enqueueSnackbar } = useSnackbar();
   const [loginValue, setLoginValue] = useState("");
   const [passValue, setPassValue] = useState("");
@@ -73,6 +76,7 @@ export const Register = (props) => {
       >
         REGISTER
       </Button>
+      HELLO, {someName}
     </form>
   );
 };

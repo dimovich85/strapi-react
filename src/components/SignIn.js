@@ -3,9 +3,10 @@ import { useSnackbar } from "notistack";
 import SendIcon from "@mui/icons-material/Send";
 import React, { useState } from "react";
 import { ENV } from "../config";
+import { useAuth } from "../hooks/useAuth";
 
 export const SignIn = (props) => {
-  const { onAuth } = props;
+  const { onAuth } = useAuth();
   const { enqueueSnackbar } = useSnackbar();
   const [loginValue, setLoginValue] = useState("");
   const [passValue, setPassValue] = useState("");

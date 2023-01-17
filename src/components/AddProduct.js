@@ -8,9 +8,11 @@ import DialogContent from "@mui/material/DialogContent";
 import Select from "@mui/material/Select";
 import DialogTitle from "@mui/material/DialogTitle";
 import { useSnackbar } from "notistack";
+import { useAuth } from "../hooks/useAuth";
 
 export const AddProduct = (props) => {
-  const { token, setIsLoading, fetchProducts } = props;
+  const { token } = useAuth();
+  const { setIsLoading, fetchProducts } = props;
   const { enqueueSnackbar } = useSnackbar();
 
   const [productName, setProductName] = useState("");

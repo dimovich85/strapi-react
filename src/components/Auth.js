@@ -5,8 +5,7 @@ import { Register } from "./Register";
 import { SignIn } from "./SignIn";
 import { TabPanel } from "./TabPanel";
 
-export const Auth = (props) => {
-  const { onAuth } = props;
+export const Auth = () => {
   const [value, setValue] = useState(0);
 
   const handleChange = (event, newValue) => {
@@ -20,10 +19,10 @@ export const Auth = (props) => {
         <Tab label="Registeration" />
       </Tabs>
       <TabPanel value={value} index={0}>
-        <SignIn onAuth={onAuth} />
+        <SignIn />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <Register onRegister={onAuth} />
+        <Register />
       </TabPanel>
     </Grid>
   );

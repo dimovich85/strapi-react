@@ -15,9 +15,10 @@ import CategoryIcon from "@mui/icons-material/Category";
 import { useSnackbar } from "notistack";
 import { strapiNormalize } from "../utils";
 import { AddProduct } from "./AddProduct";
+import { useAuth } from "../hooks/useAuth";
 
 export const ProductsContent = (props) => {
-  const { token, user } = props;
+  const { token, user } = useAuth();
   const { enqueueSnackbar } = useSnackbar();
   const [products, setProducts] = useState([]);
 
@@ -72,9 +73,15 @@ export const ProductsContent = (props) => {
                 md={6}
                 lg={3}
               >
-                <Paper elevation={2}>
+                <Paper className={classes.paper} elevation={2}>
                   {photo ? (
-                    <Box flex justifyContent="center" mt={1} mb={2}>
+                    <Box
+                      className={classes.avatarContainer}
+                      flex
+                      justifyContent="center"
+                      mt={1}
+                      mb={2}
+                    >
                       <img
                         className={classes.img}
                         src={`${ENV.STRAPI_ROOT_URL}${photo.url}`}
@@ -82,7 +89,13 @@ export const ProductsContent = (props) => {
                       />
                     </Box>
                   ) : (
-                    <Box flex justifyContent="center" mt={1} mb={2}>
+                    <Box
+                      className={classes.avatarContainer}
+                      flex
+                      justifyContent="center"
+                      mt={1}
+                      mb={2}
+                    >
                       <Avatar>
                         <CategoryIcon />
                       </Avatar>
@@ -103,11 +116,7 @@ export const ProductsContent = (props) => {
           })
         )}
       </Grid>
-      <AddProduct
-        token={token}
-        setIsLoading={setIsLoading}
-        fetchProducts={fetchProducts}
-      />
+      <AddProduct setIsLoading={setIsLoading} fetchProducts={fetchProducts} />
     </Box>
   );
 };

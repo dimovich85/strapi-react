@@ -7,3 +7,12 @@
 .img {
   max-width: 100%;
 }
+
+.paper {
+  text-align: center;
+  height: 100%;
+}
+
+.avatarContainer {
+ display: flex;
+}
