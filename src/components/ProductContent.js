@@ -3,11 +3,14 @@ import {
   Box,
   CircularProgress,
   Grid,
+  IconButton,
   Paper,
   Typography,
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
+import UpdateIcon from "@mui/icons-material/Update";
+import Tooltip from "@mui/material/Tooltip";
 import EuroIcon from "@mui/icons-material/Euro";
 import { ENV } from "../config";
 import classes from "./ProductContent.module.css";
@@ -50,7 +53,24 @@ export const ProductsContent = (props) => {
       <Typography className={classes.h1} variant="h1">
         Hello, {user.username}
       </Typography>
-      <Typography variant="h2">Products</Typography>
+      <Typography variant="h2">
+        <Grid flex justifyContent="space-between">
+          Products
+          <Tooltip
+            classes={{
+              tooltip: classes.tooltip,
+              arrow: classes.arrow,
+            }}
+            arrow
+            placement="right"
+            title="Update data"
+          >
+            <IconButton className={classes.updateBtn}>
+              <UpdateIcon className={classes.upodateIcon} />
+            </IconButton>
+          </Tooltip>
+        </Grid>
+      </Typography>
       <Grid
         container
         flex

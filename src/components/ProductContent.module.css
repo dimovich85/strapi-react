@@ -16,3 +16,21 @@
 .avatarContainer {
  display: flex;
 }
+
+.upodateIcon {
+  color: crimson;
+}
+
+.updateBtn {
+  margin-left: 30px;
+}
+
+.tooltip {
+  color: #600160;
+  background-color: #ece928;
+  font-size: 20px;
+}
+
+.arrow {
+  color: #ece928;
+}
