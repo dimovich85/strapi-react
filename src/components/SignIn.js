@@ -4,12 +4,16 @@ import SendIcon from "@mui/icons-material/Send";
 import React, { useState } from "react";
 import { ENV } from "../config";
 import { useAuth } from "../hooks/useAuth";
+import { useStyles } from "./style";
+import { useStyles2 } from "./style2";
 
 export const SignIn = (props) => {
   const { onAuth } = useAuth();
   const { enqueueSnackbar } = useSnackbar();
   const [loginValue, setLoginValue] = useState("");
   const [passValue, setPassValue] = useState("");
+  const { classes, cx } = useStyles({ passText: passValue });
+  const { classes: classes2 } = useStyles2();
   const onChangeLogin = (e) => setLoginValue(e.target.value);
   const onChangePass = (e) => setPassValue(e.target.value);
   const onSubmit = async (e) => {
@@ -71,6 +75,12 @@ export const SignIn = (props) => {
       >
         Login
       </Button>
+      {/* <Button className={cx(classes.btn, classes.btnOffset)}>
+        <div></div>
+        TEST 1
+      </Button>
+      <Button className={cx(classes.btn, classes.btnOffset)}>TEST 2</Button>
+      <div className={classes2.block} /> */}
     </form>
   );
 };
