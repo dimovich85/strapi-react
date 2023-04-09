@@ -1,4 +1,11 @@
-import { Box, Button, TextField } from "@mui/material";
+import {
+  Box,
+  Button,
+  Drawer,
+  TextField,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
 import { useSnackbar } from "notistack";
 import SendIcon from "@mui/icons-material/Send";
 import React, { useState } from "react";
@@ -6,8 +13,15 @@ import { ENV } from "../config";
 import { useAuth } from "../hooks/useAuth";
 import { useStyles } from "./style";
 import { useStyles2 } from "./style2";
+import { MobileBlock } from "./MobileBlock";
+import { DesktopBlock } from "./DesktopBlock";
 
 export const SignIn = (props) => {
+  const { breakpoints } = useTheme();
+  const isMobile = useMediaQuery(breakpoints.down("sm"));
+  const isTablet = useMediaQuery(breakpoints.between("sm", "md"));
+  const isDesktop = useMediaQuery(breakpoints.up("md"));
+
   const { onAuth } = useAuth();
   const { enqueueSnackbar } = useSnackbar();
   const [loginValue, setLoginValue] = useState("");
@@ -45,6 +59,7 @@ export const SignIn = (props) => {
   };
   return (
     <form onSubmit={onSubmit}>
+      {/* <Drawer open={!isMobile}>DRAWER</Drawer> */}
       <Box p={1}>
         <TextField
           fullWidth
@@ -82,6 +97,7 @@ export const SignIn = (props) => {
       <Button className={cx(classes.btn, classes.btnOffset)}>TEST 2</Button>
       <div className={classes2.block} /> */}
       <div className={classes.block}>HELLO</div>
+      {isMobile ? <MobileBlock /> : <DesktopBlock />}
     </form>
   );
 };

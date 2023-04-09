@@ -38,6 +38,9 @@ export const useStyles = makeStyles({ name: "My SignIn Component" })(
           padding: spacing(2),
           backgroundColor: palette.primary.light,
         },
+        [breakpoints.down(1000)]: {
+          color: palette.error.main,
+        },
       },
     };
   }
