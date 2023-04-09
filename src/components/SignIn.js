@@ -81,6 +81,7 @@ export const SignIn = (props) => {
       </Button>
       <Button className={cx(classes.btn, classes.btnOffset)}>TEST 2</Button>
       <div className={classes2.block} /> */}
+      <div className={classes.block}>HELLO</div>
     </form>
   );
 };
